@@ -4,15 +4,15 @@ const counties = [
         'denial_rates': [
             {
                 'category': 'overall',
-                'value': 5.3
+                'value': 5.9
             },
             {
                 'category': 'white', 
-                'value': 3.6,
+                'value': 4.1,
             },
             {
                 'category': 'hl',
-                'value': 11.7
+                'value': 12.0
             }
         ]
     },
@@ -21,15 +21,15 @@ const counties = [
         'denial_rates': [
             {
                 'category': 'overall',
-                'value': 5.7
+                'value': 6.4
             },
             {
                 'category': 'white', 
-                'value': 3.9,
+                'value': 4.4,
             },
             {
                 'category': 'hl',
-                'value': 11.1
+                'value': 12.1
             }
         ]
     },
@@ -38,15 +38,15 @@ const counties = [
         'denial_rates': [
             {
                 'category': 'overall',
-                'value': 8.7
+                'value': 9.6
             },
             {
                 'category': 'white', 
-                'value': 4.8,
+                'value': 5.4,
             },
             {
                 'category': 'hl',
-                'value': 12.9
+                'value': 14.2
             }
         ]
     },
@@ -55,15 +55,15 @@ const counties = [
         'denial_rates': [
             {
                 'category': 'overall',
-                'value': 6.4
+                'value': 6.8
             },
             {
                 'category': 'white', 
-                'value': 4.5,
+                'value': 4.9,
             },
             {
                 'category': 'hl',
-                'value': 9.4
+                'value': 10.0
             }
         ]
     },
@@ -72,15 +72,15 @@ const counties = [
         'denial_rates': [
             {
                 'category': 'overall',
-                'value': 7.9
+                'value': 8.5
             },
             {
                 'category': 'white', 
-                'value': 4.8,
+                'value': 5.2,
             },
             {
                 'category': 'hl',
-                'value': 10.6
+                'value': 11.6
             }
         ]
     },
@@ -89,177 +89,7 @@ const counties = [
         'denial_rates': [
             {
                 'category': 'overall',
-                'value': 8.2
-            },
-            {
-                'category': 'white', 
-                'value': 6.0,
-            },
-            {
-                'category': 'hl',
-                'value': 10.3
-            }
-        ]
-    },
-    {
-        "name": "Mercer County",
-        'denial_rates': [
-            {
-                'category': 'overall',
-                'value': 7.7
-            },
-            {
-                'category': 'white', 
-                'value': 4.7,
-            },
-            {
-                'category': 'hl',
-                'value': 12.2
-            }
-        ]
-    },
-    {
-        "name": "Ocean County",
-        'denial_rates': [
-            {
-                'category': 'overall',
-                'value': 6.5
-            },
-            {
-                'category': 'white', 
-                'value': 5.9,
-            },
-            {
-                'category': 'hl',
-                'value': 9.4
-            }
-        ]
-    },
-    {
-        "name": "Middlesex County",
-        'denial_rates': [
-            {
-                'category': 'overall',
-                'value': 8.4
-            },
-            {
-                'category': 'white', 
-                'value': 5.9,
-            },
-            {
-                'category': 'hl',
-                'value': 9.8
-            }
-        ]
-    },
-    {
-        "name": "Monmouth County",
-        'denial_rates': [
-            {
-                'category': 'overall',
-                'value': 6.7
-            },
-            {
-                'category': 'white', 
-                'value': 5.8,
-            },
-            {
-                'category': 'hl',
-                'value': 8.6
-            }
-        ]
-    },
-    {
-        "name": "Camden County",
-        'denial_rates': [
-            {
-                'category': 'overall',
-                'value': 5.9
-            },
-            {
-                'category': 'white', 
-                'value': 3.8,
-            },
-            {
-                'category': 'hl',
                 'value': 8.8
-            }
-        ]
-    },
-    {
-        "name": "Bergen County",
-        'denial_rates': [
-            {
-                'category': 'overall',
-                'value': 7.9
-            },
-            {
-                'category': 'white', 
-                'value': 6.0,
-            },
-            {
-                'category': 'hl',
-                'value': 9.3
-            }
-        ]
-    },
-    {
-        "name": "Morris County",
-        'denial_rates': [
-            {
-                'category': 'overall',
-                'value': 5.9
-            },
-            {
-                'category': 'white', 
-                'value': 4.7,
-            },
-            {
-                'category': 'hl',
-                'value': 8.4
-            }
-        ]
-    },
-    {
-        "name": "Sussex County",
-        'denial_rates': [
-            {
-                'category': 'overall',
-                'value': 7.5
-            },
-            {
-                'category': 'white', 
-                'value': 6.4,
-            },
-            {
-                'category': 'hl',
-                'value': 9.9
-            }
-        ]
-    },
-    {
-        "name": "Hunterdon County",
-        'denial_rates': [
-            {
-                'category': 'overall',
-                'value': 6.1
-            },
-            {
-                'category': 'white', 
-                'value': 5.4,
-            },
-            {
-                'category': 'hl',
-                'value': 7.5
-            }
-        ]
-    },
-    {
-        "name": "Atlantic County",
-        'denial_rates': [
-            {
-                'category': 'overall',
-                'value': 8.3
             },
             {
                 'category': 'white', 
@@ -272,23 +102,264 @@ const counties = [
         ]
     },
     {
+        "name": "Mercer County",
+        'denial_rates': [
+            {
+                'category': 'overall',
+                'value': 8.2
+            },
+            {
+                'category': 'white', 
+                'value': 4.9,
+            },
+            {
+                'category': 'hl',
+                'value': 13.2
+            }
+        ]
+    },
+    {
+        "name": "Ocean County",
+        'denial_rates': [
+            {
+                'category': 'overall',
+                'value': 7.1
+            },
+            {
+                'category': 'white', 
+                'value': 6.5,
+            },
+            {
+                'category': 'hl',
+                'value': 9.7
+            }
+        ]
+    },
+    {
+        "name": "Middlesex County",
+        'denial_rates': [
+            {
+                'category': 'overall',
+                'value': 9.1
+            },
+            {
+                'category': 'white', 
+                'value': 6.6,
+            },
+            {
+                'category': 'hl',
+                'value': 11.0
+            }
+        ]
+    },
+    {
+        "name": "Monmouth County",
+        'denial_rates': [
+            {
+                'category': 'overall',
+                'value': 7.2
+            },
+            {
+                'category': 'white', 
+                'value': 6.2,
+            },
+            {
+                'category': 'hl',
+                'value': 9.7
+            }
+        ]
+    },
+    {
+        "name": "Camden County",
+        'denial_rates': [
+            {
+                'category': 'overall',
+                'value': 6.9
+            },
+            {
+                'category': 'white', 
+                'value': 4.4,
+            },
+            {
+                'category': 'hl',
+                'value': 10.1
+            }
+        ]
+    },
+    {
+        "name": "Bergen County",
+        'denial_rates': [
+            {
+                'category': 'overall',
+                'value': 8.3
+            },
+            {
+                'category': 'white', 
+                'value': 6.3,
+            },
+            {
+                'category': 'hl',
+                'value': 10.4
+            }
+        ]
+    },
+    {
+        "name": "Morris County",
+        'denial_rates': [
+            {
+                'category': 'overall',
+                'value': 6.3
+            },
+            {
+                'category': 'white', 
+                'value': 5.0,
+            },
+            {
+                'category': 'hl',
+                'value': 9.1
+            }
+        ]
+    },
+    {
+        "name": "Sussex County",
+        'denial_rates': [
+            {
+                'category': 'overall',
+                'value': 8.5
+            },
+            {
+                'category': 'white', 
+                'value': 7.1,
+            },
+            {
+                'category': 'hl',
+                'value': 11.6
+            }
+        ]
+    },
+    {
+        "name": "Hunterdon County",
+        'denial_rates': [
+            {
+                'category': 'overall',
+                'value': 6.6
+            },
+            {
+                'category': 'white', 
+                'value': 5.7,
+            },
+            {
+                'category': 'hl',
+                'value': 8.7
+            }
+        ]
+    },
+    {
+        "name": "Atlantic County",
+        'denial_rates': [
+            {
+                'category': 'overall',
+                'value': 9.1
+            },
+            {
+                'category': 'white', 
+                'value': 7.0,
+            },
+            {
+                'category': 'hl',
+                'value': 12.7
+            }
+        ]
+    },
+    {
         "name": "Hudson County",
         'denial_rates': [
             {
                 'category': 'overall',
-                'value': 9.7
+                'value': 10.3
             },
             {
                 'category': 'white', 
-                'value': 7.6,
+                'value': 8.1,
             },
             {
                 'category': 'hl',
-                'value': 12.0
+                'value': 13.0
+            }
+        ]
+    },
+    {
+        "name": "Warren County",
+        'denial_rates': [
+            {
+                'category': 'overall',
+                'value': 8.1
+            },
+            {
+                'category': 'white', 
+                'value': 6.1,
+            },
+            {
+                'category': 'hl',
+                'value': 11.8
+            }
+        ]
+    },
+    {
+        "name": "Cape May County",
+        'denial_rates': [
+            {
+                'category': 'overall',
+                'value': 6.9
+            },
+            {
+                'category': 'white', 
+                'value': 6.3,
+            },
+            {
+                'category': 'hl',
+                'value': 9.0
+            }
+        ]
+    },
+    {
+        "name": "Cumberland County",
+        'denial_rates': [
+            {
+                'category': 'overall',
+                'value': 10.7
+            },
+            {
+                'category': 'white', 
+                'value': 7.2,
+            },
+            {
+                'category': 'hl',
+                'value': 11.5
+            }
+        ]
+    },
+    {
+        "name": "Salem County",
+        'denial_rates': [
+            {
+                'category': 'overall',
+                'value': 9.6
+            },
+            {
+                'category': 'white', 
+                'value': 7.3,
+            },
+            {
+                'category': 'hl',
+                'value': 13.1
             }
         ]
     }
-]
+];
+
+const sortedCounties = counties.sort((a,b) => (b.denial_rates[2].value - b.denial_rates[1].value) - (a.denial_rates[2].value - a.denial_rates[1].value));
+console.log(sortedCounties)
 
 
 function updateHeight() {
@@ -330,7 +401,7 @@ const xLabel = xAxis.append("g")
 
 const xMax = d3.max(counties, d => d3.max(d.denial_rates, dr => dr.value));
 const xMin = d3.min(counties, d => d3.min(d.denial_rates, dr => dr.value));
-const yVars = counties.map(d => d.name);
+const yVars = sortedCounties.map(d => d.name);
 
 const leftPadding = 80;
 
@@ -349,7 +420,7 @@ xAxis.selectAll(".domain").remove();
 xAxis.selectAll(".tick line").attr("y2", -height + margin.top).attr("stroke", 'lightgray');
 
 const gCounty = svg.selectAll(".county")
-    .data(counties)
+    .data(sortedCounties)
     .join("g")
         .attr("class", "county")
         .attr("transform", d => `translate(0,${yScale(d.name)})`);
