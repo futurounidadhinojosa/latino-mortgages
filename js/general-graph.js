@@ -2,24 +2,26 @@ const raceths = [
   {
     'name': 'latino',
     'value': 11,
-    'color': 'steelblue'
+    'color': 'steelblue',
+    'letters': ["S", "H", "b", "c", "C", "e", "f", "h", "W", "F", "i"]
   },
   {
     'name': 'overall',
     'value': 8,
-    'color': 'lightgray'
+    'color': 'lightgray',
+    'letters': ["l", "q", "r", "s", "T", "u", "A", "B"]
   },
   {
     'name': 'white',
     'value': 6,
-    'color': 'orange'
+    'color': 'orange',
+    'letters': ["L", "Q", "R", "V", "c", "C"]
   }
 ];
 
 const lineHeight = 24;
 
 function arrestedPeople(div, colorCategory) {
-    const letters = ["S", "H", "b", "c", "C", "e", "f", "h", "W", "F", "i", "l", "q", "r", "s", "t", "u", "A", "B", "L", "Q", "R", "V", "c", "C", "S", "H", "b", "c", "C", "e", "f", "h", "W", "F", "i", "l", "q", "r", "s", "t", "u", "A", "B", "L", "Q", "R", "V", "c", "C", "S", "H", "b", "c", "C", "e", "f", "h", "W", "F", "i", "l", "q", "r", "s", "t", "u", "A", "B", "L", "Q", "R", "V", "c", "C", "S", "H", "b", "c", "C", "e", "f", "h", "W", "F", "i", "l", "q", "r", "s", "t", "u", "A", "B", "L", "Q", "R", "V", "c", "C"];
   
     const peopleDiv = d3.select(`#${div}`);
 
@@ -37,7 +39,7 @@ function arrestedPeople(div, colorCategory) {
         .html(d => d.name === 'latino' ? `<span class='apps'>Out of 100 applications submitted by latinos,</span> <span class='value'>${d.value} were denied</span>` : d.name === 'overall' ? `<span class='apps'>Compared to</span> <span class='value'>only ${d.value} overall</span>` : `<span class='apps'>And</span> <span class='value'>${d.value} for white</span>`)
   
     gPeople.selectAll("p")
-      .data(d => letters.slice(0, d.value))
+      .data(d => d.letters)
       .join("p")
       .text(d => d)
       .attr('class', 'p-weepeople')
@@ -46,13 +48,11 @@ function arrestedPeople(div, colorCategory) {
 
 function updateHeight() {
     const sh = d3.select("#viz").node().getBoundingClientRect().height;
-        
     d3.select("body").style("height", sh + "px");
-
     pymChild.sendHeight();
   }
 
 var pymChild = new pym.Child({});
 
-arrestedPeople("homelessness-arrests", 'orange', 45);
+arrestedPeople("denied-applications", 'orange', 45);
 updateHeight();
