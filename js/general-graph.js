@@ -1,28 +1,18 @@
 const raceths = [
   {
-    'name': 'white',
-    'value': 6,
-    'color': 'orange'
-  },
-  {
     'name': 'latino',
-    'value': 7,
+    'value': 11,
     'color': 'steelblue'
   },
   {
-    'name': 'asian/pacific islander',
-    'value': 7,
-    'color': 'green'
-  },
-  {
-    'name': 'native american',
+    'name': 'overall',
     'value': 8,
-    'color': 'red'
+    'color': 'lightgray'
   },
   {
-    'name': 'black',
-    'value': 9,
-    'color': 'pink'
+    'name': 'white',
+    'value': 6,
+    'color': 'orange'
   }
 ];
 
@@ -41,10 +31,10 @@ function arrestedPeople(div, colorCategory) {
         .style('color', d => d.color);
 
     gPeople.selectAll(".people-name")
-      .data(d => [`${d.value} ${d.name}`])
+      .data(d => [d])
       .join("span")
         .attr("class", "people-name")
-        .html(d => `${d} <span class='apps'>applicants denied<span>`)
+        .html(d => d.name === 'latino' ? `<span class='apps'>Out of 100 applications submitted by latinos,</span> <span class='value'>${d.value} were denied</span>` : d.name === 'overall' ? `<span class='apps'>Compared to</span> <span class='value'>only ${d.value} overall</span>` : `<span class='apps'>And</span> <span class='value'>${d.value} for white</span>`)
   
     gPeople.selectAll("p")
       .data(d => letters.slice(0, d.value))
