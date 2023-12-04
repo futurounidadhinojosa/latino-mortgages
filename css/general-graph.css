@@ -33,19 +33,27 @@
   }
   
   .weepeople {
-    display: flex;
+    /* display: flex; */
     flex-wrap: wrap;
     justify-content: space-evenly;
     position: relative;
     margin-left: -12px;
+  }
+  .people-group {
+    display: block;
+  }
+  .people-name {
+    width: 120px;
+    display: inline-block;
   }
   .p-weepeople {
     font-family: "WeePeople";
     margin: 0;
     line-height: 0.9;
     flex-grow: 1;
-    width: 5%;
+    width: 3.5%;
     font-size: 60px;
+    display: inline-block;
   }
   
   .p-weepeople.legend {
@@ -59,4 +67,8 @@
     font-size: 15px;
     line-height: 21px;
     color: #5c5859;
+  }
+
+  .apps {
+    color: black;
   }

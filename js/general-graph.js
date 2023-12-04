@@ -1,23 +1,57 @@
-function arrestedPeople(div, colorCategory, pct) {
+const raceths = [
+  {
+    'name': 'white',
+    'value': 6,
+    'color': 'orange'
+  },
+  {
+    'name': 'latino',
+    'value': 7,
+    'color': 'steelblue'
+  },
+  {
+    'name': 'asian/pacific islander',
+    'value': 7,
+    'color': 'green'
+  },
+  {
+    'name': 'native american',
+    'value': 8,
+    'color': 'red'
+  },
+  {
+    'name': 'black',
+    'value': 9,
+    'color': 'pink'
+  }
+];
+
+const lineHeight = 24;
+
+function arrestedPeople(div, colorCategory) {
     const letters = ["S", "H", "b", "c", "C", "e", "f", "h", "W", "F", "i", "l", "q", "r", "s", "t", "u", "A", "B", "L", "Q", "R", "V", "c", "C", "S", "H", "b", "c", "C", "e", "f", "h", "W", "F", "i", "l", "q", "r", "s", "t", "u", "A", "B", "L", "Q", "R", "V", "c", "C", "S", "H", "b", "c", "C", "e", "f", "h", "W", "F", "i", "l", "q", "r", "s", "t", "u", "A", "B", "L", "Q", "R", "V", "c", "C", "S", "H", "b", "c", "C", "e", "f", "h", "W", "F", "i", "l", "q", "r", "s", "t", "u", "A", "B", "L", "Q", "R", "V", "c", "C"];
   
-    var peopleDiv = d3.select(`#${div}`)
+    const peopleDiv = d3.select(`#${div}`);
+
+    const gPeople = peopleDiv.selectAll('.people-group')
+      .data(raceths)
+      .join("g")
+        .attr("class", 'people-group')
+        .attr("transform", (d,i) => `translate(0, ${i * lineHeight})`)
+        .style('color', d => d.color);
+
+    gPeople.selectAll(".people-name")
+      .data(d => [`${d.value} ${d.name}`])
+      .join("span")
+        .attr("class", "people-name")
+        .html(d => `${d} <span class='apps'>applicants denied<span>`)
   
-    peopleDiv.selectAll("p")
-      .data(letters)
+    gPeople.selectAll("p")
+      .data(d => letters.slice(0, d.value))
       .join("p")
-      .text(function(d, i) {
-        return d;
-      })
+      .text(d => d)
       .attr('class', 'p-weepeople')
-      .style('color', function(d, i) {
-        if(i >= pct) {
-          return 'lightgray';
-        } else {
-          return colorCategory;
-        }
-      })
-      .style('text-align', 'left')
+      .style('text-align', 'left');
 }
 
 function updateHeight() {
