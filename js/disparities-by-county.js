@@ -358,6 +358,12 @@ const counties = [
     }
 ];
 
+const labels = {
+    "white": "White",
+    "overall": 'Overall',
+    'hl': "Hispanic/Latino"
+}
+
 const sortedCounties = counties.sort((a,b) => (b.denial_rates[2].value - b.denial_rates[1].value) - (a.denial_rates[2].value - a.denial_rates[1].value));
 console.log(sortedCounties)
 
@@ -374,12 +380,12 @@ const windowWidth = window.innerWidth;
 const threshold = 500;
 
 const width = windowWidth < threshold ? windowWidth * 0.9 : windowWidth * 0.4;
-const height = windowWidth < threshold ? width * 0.8 : width * 0.7;
+const height = windowWidth < threshold ? width * 0.8 : width * 0.9;
 
 const margin = {
     left: windowWidth < threshold ? 30 : 80,
     right: windowWidth < threshold ? 80 : 170,
-    top: 10,
+    top: 30,
     bottom: windowWidth < threshold ? 20 : 70
 };
 
@@ -414,10 +420,25 @@ const xScale = d3.scaleLinear()
     .range([margin.left + leftPadding, width - margin.right])
     .domain([xMin, xMax]);
 
-xAxis.call(d3.axisBottom(xScale).ticks(3).tickFormat(d => d + '%'));
+xAxis.call(d3.axisBottom(xScale).tickValues([4, 8, 12, 16]).tickFormat(d => d + '%'));
 // yAxis.call(d3.axisLeft(yScale))  
 xAxis.selectAll(".domain").remove();
-xAxis.selectAll(".tick line").attr("y2", -height + margin.top).attr("stroke", 'lightgray');
+xAxis.selectAll(".tick line").attr("y2", -height + margin.top + margin.bottom - 4).attr("stroke", '#d9d9d9');
+
+const gLabels = svg.selectAll(".labels")
+    .data([sortedCounties[0]])
+    .join("g")
+        .attr("class", "labels")
+        .attr("transform", d => `translate(0,${margin.top/2})`);
+
+gLabels.selectAll(".label")
+    .data(d => d.denial_rates)
+    .join("text")
+        .attr("x", d => xScale(d.value))
+        .style("text-anchor", 'middle')
+        .attr("fill", d => d.category === 'white' ? '#ff9912' : d.category === 'hl' ? '#4682b4' : 'lightgray')
+        .style("font-weight", 500)
+        .text(d => labels[d.category])
 
 const gCounty = svg.selectAll(".county")
     .data(sortedCounties)
@@ -430,6 +451,7 @@ gCounty.selectAll(".county-name")
     .join("text")
         .attr("class", 'county-name')
         .attr("y", 6)
+        .style("font-weight", 500)
         .text(d => d);
 
 gCounty.selectAll(".county-line")
@@ -449,7 +471,20 @@ gCounty.selectAll(".county-rate")
         .attr("cx", d => xScale(d.value))
         .attr('cy', 0)
         .attr('r', 5)
-        .attr("fill", d => d.category === 'white' ? 'orange' : d.category === 'hl' ? 'steelblue' : 'lightgray');
+        .attr("fill", d => d.category === 'white' ? '#ff9912' : d.category === 'hl' ? '#4682b4' : 'lightgray');
+
+// gCounty.selectAll(".county-rate-value")
+//     .data(d => d.denial_rates)
+//     .join("text")
+//         .attr("class", "county-rate-value")
+//         .style("text-anchor", d => d.category === 'white' ? 'end' : 'begin')
+//         .attr("x", d => d.category === 'white' ? xScale(d.value) - 8 : xScale(d.value) + 8)
+//         .attr("y", 4)
+//         // .attr('cy', 0)
+//         // .attr('r', 5)
+//         .style("font-size", 12)
+//         .attr("fill", d => d.category === 'white' ? '#ff9912' : d.category === 'hl' ? '#4682b4' : 'lightgray')
+//         .text(d => d.category === 'overall' ? '' : d.value + '%')
 
 var pymChild = new pym.Child({});
 updateHeight();

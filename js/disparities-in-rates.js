@@ -4,14 +4,14 @@ const raceths = [
         'median': 0.35,
         'prop05': 38,
         'prop10': 13,
-        'color': 'orange'
+        'color': '#4682b4'
     },
     {
         "name": "White",
         'median': 0.16,
         'prop05': 21,
         'prop10': 6,
-        'color': 'steelblue'
+        'color': '#ff9912'
     }
 ]
 
@@ -28,12 +28,12 @@ const windowWidth = window.innerWidth;
 const threshold = 500;
 
 const width = windowWidth < threshold ? windowWidth * 0.9 : windowWidth * 0.4;
-const height = windowWidth < threshold ? width * 0.8 : width * 0.25;
+const height = windowWidth < threshold ? width * 0.8 : width * 0.3;
 
 const margin = {
     left: windowWidth < threshold ? 30 : 80,
     right: windowWidth < threshold ? 80 : 170,
-    top: 10,
+    top: 40,
     bottom: windowWidth < threshold ? 20 : 70
 };
 
@@ -69,8 +69,18 @@ function createBarChart(divId, field, percent=false) {
 
     xAxis.call(d3.axisBottom(xScale).ticks(3).tickFormat(d => percent === true ? d + '%' : d));
     // yAxis.call(d3.axisLeft(yScale))  
-    // xAxis.selectAll(".domain").remove();
+    xAxis.selectAll(".domain").remove();
     // xAxis.selectAll(".tick line").attr("y2", -height + margin.top).attr("stroke", 'lightgray');
+
+    svg.selectAll(".title")
+        .data(field === 'median' ? ['Median rate spread'] : field === 'prop05' ? ['Borrowers with a rate spread greater than 0.5'] : ['Borrowers with a rate spread greater than 1'])
+        .join('text')
+            .attr("class", 'title')
+            .attr('x', 0)
+            .attr('y', 16)
+            .style("font-weight", 600)
+            .style("font-size", 18)
+            .text(d => d)
 
     const gRaceth = svg.selectAll(".raceth")
         .data(raceths)
@@ -103,9 +113,10 @@ function createBarChart(divId, field, percent=false) {
         .data(d => [d])
         .join("text")
             .attr("class", "raceth-value-text")
-            .attr("x", d => xScale(d[field]) + 10)
+            .attr("x", d => xScale(d[field]) + 6)
             .attr('y', 6)
             .attr("fill", d => d.color)
+            .style("font-size", 14)
             .text(d => percent === true ? d[field] + '%' : d[field])
 }
 

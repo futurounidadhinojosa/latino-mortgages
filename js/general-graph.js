@@ -2,7 +2,7 @@ const raceths = [
   {
     'name': 'latino',
     'value': 11,
-    'color': 'steelblue',
+    'color': '#4682b4',
     'letters': ["S", "H", "b", "c", "C", "e", "f", "h", "W", "F", "i"]
   },
   {
@@ -14,7 +14,7 @@ const raceths = [
   {
     'name': 'white',
     'value': 6,
-    'color': 'orange',
+    'color': '#ff9912',
     'letters': ["L", "Q", "R", "V", "c", "C"]
   }
 ];
@@ -47,8 +47,9 @@ function arrestedPeople(div, colorCategory) {
 }
 
 function updateHeight() {
-    const sh = d3.select("#viz").node().getBoundingClientRect().height;
-    d3.select("body").style("height", sh + "px");
+    const sh = d3.select("#viz").node().getBoundingClientRect().height,
+      nh = d3.select(".source").node().getBoundingClientRect().height;
+    d3.select("body").style("height", (sh + nh) + "px");
     pymChild.sendHeight();
   }
 

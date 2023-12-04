@@ -45,7 +45,7 @@
   }
   .people-name {
     display: block;
-    font-size: 21px;
+    font-size: 18px;
     font-weight: 600;
   }
   .p-weepeople {
@@ -66,7 +66,7 @@
   }
   
   .source {
-    font-size: 15px;
+    font-size: 10px;
     line-height: 21px;
     color: #5c5859;
   }
