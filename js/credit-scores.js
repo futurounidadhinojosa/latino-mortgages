@@ -78,7 +78,7 @@ const height = windowWidth < threshold ? width * 0.8 : width * 0.7;
 const margin = {
     left: windowWidth < threshold ? 30 : 80,
     right: windowWidth < threshold ? 80 : 170,
-    top: 40,
+    top: 60,
     bottom: windowWidth < threshold ? 20 : 70
 };
 
@@ -94,6 +94,28 @@ const yScale = d3.scaleBand()
     .padding(0.1)
     .range([height - margin.bottom, margin.top])
     .domain(yVars.reverse());
+
+svg.selectAll(".reason-title")
+    .data(['Conventional', 'FHA'])
+    .join("text")
+        .attr("class", "reason-title")
+        .attr("stroke", 'none')
+        .style("text-anchor", 'middle')
+        .style("fill", 'black')
+        .text(d => d)
+        .attr("x", (d,i) => margin.left + leftPadding + i * (2*rectWidth + gapRect) + rectWidth)
+        .attr("y", yScale.bandwidth() - 6);
+
+svg.selectAll(".reason-subtitle")
+    .data(['H/L', 'Not H/L', 'H/L', 'Not H/L'])
+    .join("text")
+        .attr("class", "reason-subtitle")
+        .attr("stroke", 'none')
+        .style("text-anchor", 'middle')
+        .style("fill", 'black')
+        .text(d => d)
+        .attr("x", (d,i) => margin.left + leftPadding + i * (rectWidth + gapRect) + rectWidth / 2)
+        .attr("y", yScale.bandwidth() * 2 - 8);
 
 const gReasons = svg.selectAll(".reason")
     .data(reasons)
