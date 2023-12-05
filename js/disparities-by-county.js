@@ -383,7 +383,7 @@ const height = windowWidth < threshold ? width * 0.8 : width * 0.9;
 
 const margin = {
     left: windowWidth < threshold ? 30 : 80,
-    right: windowWidth < threshold ? 80 : 170,
+    right: windowWidth < threshold ? 80 : 80,
     top: 30,
     bottom: windowWidth < threshold ? 20 : 70
 };
@@ -417,9 +417,9 @@ const yScale = d3.scaleBand()
 
 const xScale = d3.scaleLinear()
     .range([margin.left + leftPadding, width - margin.right])
-    .domain([xMin, xMax]);
+    .domain([0, xMax]);
 
-xAxis.call(d3.axisBottom(xScale).tickValues([4, 8, 12, 16]).tickFormat(d => d + '%'));
+xAxis.call(d3.axisBottom(xScale).tickValues([0, 4, 8, 12, 16]).tickFormat(d => d + '%'));
 // yAxis.call(d3.axisLeft(yScale))  
 xAxis.selectAll(".domain").remove();
 xAxis.selectAll(".tick line").attr("y2", -height + margin.top + margin.bottom - 4).attr("stroke", '#d9d9d9');
