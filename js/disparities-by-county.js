@@ -365,7 +365,6 @@ const labels = {
 }
 
 const sortedCounties = counties.sort((a,b) => (b.denial_rates[2].value - b.denial_rates[1].value) - (a.denial_rates[2].value - a.denial_rates[1].value));
-console.log(sortedCounties)
 
 
 function updateHeight() {
