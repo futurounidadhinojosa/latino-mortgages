@@ -102,6 +102,7 @@ svg.selectAll(".reason-title")
         .attr("stroke", 'none')
         .style("text-anchor", 'middle')
         .style("fill", 'black')
+        .style('font-weight', 600)
         .text(d => d)
         .attr("x", (d,i) => margin.left + leftPadding + i * (2*rectWidth + gapRect) + rectWidth)
         .attr("y", yScale.bandwidth() - 6);
@@ -113,6 +114,7 @@ svg.selectAll(".reason-subtitle")
         .attr("stroke", 'none')
         .style("text-anchor", 'middle')
         .style("fill", 'black')
+        .style('font-weight', 600)
         .text(d => d)
         .attr("x", (d,i) => margin.left + leftPadding + i * (rectWidth + gapRect) + rectWidth / 2)
         .attr("y", yScale.bandwidth() * 2 - 8);
@@ -147,9 +149,10 @@ gReasons.selectAll(".reason-value")
         .attr("stroke", 'none')
         .style("text-anchor", 'middle')
         .style("fill", d => d > 20 ? 'white' : 'black')
+        .style('font-size', 12)
         .text(d => d + '%')
         .attr("x", (d,i) => margin.left + leftPadding + i * (rectWidth + gapRect) + rectWidth / 2)
-        .attr("y", yScale.bandwidth() / 4);
+        .attr("y", 5);
 
 function updateHeight() {
     const sh = d3.select("#viz").node().getBoundingClientRect().height;
