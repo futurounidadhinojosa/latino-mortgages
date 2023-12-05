@@ -2,51 +2,51 @@ const reasons = [
     {
         "name": "Debt-to-income ratio",
         "conventional hl": 34.4,
-        "conventional no hl": 32.0,
+        "conventional no hl": 31.1,
         "fha hl": 38.3,
         "fha no hl": 34.1
     },
     {
         "name": "Collateral",
         "conventional hl": 17.3,
-        "conventional no hl": 19.0,
+        "conventional no hl": 19.7,
         "fha hl": 13.1,
         "fha no hl": 14.9
     },
     {
-        "name": "Other",
-        "conventional hl": 12.0,
-        "conventional no hl": 10.1,
-        "fha hl": 11.7,
-        "fha no hl": 8.9
-    },
-    {
-        "name": "Credit history",
-        "conventional hl": 11.9,
-        "conventional no hl": 10.3,
-        "fha hl": 10.8,
-        "fha no hl": 17.8
-    },
-    {
         "name": "Credit application incomplete",
         "conventional hl":  9.9,
-        "conventional no hl": 14.1,
+        "conventional no hl": 14.2,
         "fha hl": 9.3,
         "fha no hl": 8.6
     },
     {
-        "name": "Unverifiable information",
-        "conventional hl":  5.9,
-        "conventional no hl": 5.4,
-        "fha hl": 5.8,
-        "fha no hl": 4.7
+        "name": "Credit history",
+        "conventional hl": 11.9,
+        "conventional no hl": 10.5,
+        "fha hl": 10.8,
+        "fha no hl": 17.8
+    },
+    {
+        "name": "Other",
+        "conventional hl": 12.0,
+        "conventional no hl": 10.3,
+        "fha hl": 11.7,
+        "fha no hl": 8.9
     },
     {
         "name": "Insufficient cash",
         "conventional hl":  5.7,
-        "conventional no hl": 6.3,
+        "conventional no hl": 6.0,
         "fha hl": 5.8,
         "fha no hl": 6.0
+    },
+    {
+        "name": "Unverifiable information",
+        "conventional hl":  5.9,
+        "conventional no hl": 5.2,
+        "fha hl": 5.8,
+        "fha no hl": 4.7
     },
     {
         "name": "Employment history",
@@ -65,7 +65,7 @@ const reasons = [
 ];
 
 const color = d3.scaleSequential([0, 40], d3.interpolateReds);
-const cols = ["conventional hl", "conventional no hl", "fha hl", "fha no hl"];
+const cols = ["conventional no hl", "conventional hl"];
 
 const windowWidth = window.innerWidth;
 const threshold = 500;
@@ -95,20 +95,20 @@ const yScale = d3.scaleBand()
     .range([height - margin.bottom, margin.top])
     .domain(yVars.reverse());
 
-svg.selectAll(".reason-title")
-    .data(['Conventional', 'FHA'])
-    .join("text")
-        .attr("class", "reason-title")
-        .attr("stroke", 'none')
-        .style("text-anchor", 'middle')
-        .style("fill", 'black')
-        .style('font-weight', 600)
-        .text(d => d)
-        .attr("x", (d,i) => margin.left + leftPadding + i * (2*rectWidth + gapRect) + rectWidth)
-        .attr("y", yScale.bandwidth() - 6);
+// svg.selectAll(".reason-title")
+//     .data(['Conventional', 'FHA'])
+//     .join("text")
+//         .attr("class", "reason-title")
+//         .attr("stroke", 'none')
+//         .style("text-anchor", 'middle')
+//         .style("fill", 'black')
+//         .style('font-weight', 600)
+//         .text(d => d)
+//         .attr("x", (d,i) => margin.left + leftPadding + i * (2*rectWidth + gapRect) + rectWidth)
+//         .attr("y", yScale.bandwidth() - 6);
 
 svg.selectAll(".reason-subtitle")
-    .data(['H/L', 'Not H/L', 'H/L', 'Not H/L'])
+    .data(['White', 'H/L'])
     .join("text")
         .attr("class", "reason-subtitle")
         .attr("stroke", 'none')
@@ -150,7 +150,7 @@ gReasons.selectAll(".reason-value")
         .style("text-anchor", 'middle')
         .style("fill", d => d > 20 ? 'white' : 'black')
         .style('font-size', 12)
-        .text(d => d + '%')
+        .text(d => d.toFixed(1) + '%')
         .attr("x", (d,i) => margin.left + leftPadding + i * (rectWidth + gapRect) + rectWidth / 2)
         .attr("y", 5);
 
