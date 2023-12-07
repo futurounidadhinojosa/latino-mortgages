@@ -71,10 +71,10 @@ const cols = ["conventional no hl", "conventional hl"];
 
 const windowWidth = window.innerWidth;
 const threshold = 500;
-const rectWidth = 70;
+const rectWidth = windowWidth < threshold ? 60 : 70;
 const gapRect = 4;
 
-const width = windowWidth < threshold ? windowWidth * 1.0 : windowWidth * 0.8;
+const width = windowWidth < threshold ? windowWidth * 0.9 : windowWidth * 0.8;
 const height = windowWidth < threshold ? width * 0.8 : width * 0.6;
 
 const margin = {
