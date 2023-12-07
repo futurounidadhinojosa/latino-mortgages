@@ -378,14 +378,14 @@ function updateHeight() {
 const windowWidth = window.innerWidth;
 const threshold = 500;
 
-const width = windowWidth < threshold ? windowWidth * 0.9 : windowWidth * 0.4;
-const height = windowWidth < threshold ? width * 0.8 : width * 0.9;
+const width = windowWidth < threshold ? windowWidth * 1.0 : windowWidth * 0.8;
+const height = windowWidth < threshold ? width * 1.5 : width * 0.8;
 
 const margin = {
-    left: windowWidth < threshold ? 30 : 80,
+    left: windowWidth < threshold ? 60 : 80,
     right: windowWidth < threshold ? 80 : 80,
     top: 30,
-    bottom: windowWidth < threshold ? 20 : 70
+    bottom: windowWidth < threshold ? 100 : 70
 };
 
 const svg = d3.select("#viz").append("svg")
