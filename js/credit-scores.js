@@ -78,7 +78,7 @@ const width = windowWidth < threshold ? windowWidth * 0.9 : windowWidth * 0.8;
 const height = windowWidth < threshold ? width * 0.8 : width * 0.6;
 
 const margin = {
-    left: windowWidth < threshold ? 50 : 80,
+    left: windowWidth < threshold ? 30 : 80,
     right: windowWidth < threshold ? 80 : 170,
     top: windowWidth < threshold ? 60 : 80,
     bottom: windowWidth < threshold ? 20 : 70
@@ -132,6 +132,7 @@ gReasons.selectAll(".reason-name")
     .join("text")
         .attr("class", 'reason-name')
         .attr("y", 6)
+        .style("font-size", windowWidth < threshold ? 12 : 14)
         .text(d => d.name)
 
 gReasons.selectAll(".reason-rect")
