@@ -22,6 +22,7 @@ const raceths = [
 const lineHeight = 24;
 
 const windowWidth = window.innerWidth;
+console.log(windowWidth)
 const threshold = 500;
 
 const width = 500;
