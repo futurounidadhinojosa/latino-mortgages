@@ -27,11 +27,11 @@ function updateHeight() {
 const windowWidth = window.innerWidth;
 const threshold = 500;
 
-const width = windowWidth < threshold ? windowWidth * 0.9 : windowWidth * 0.4;
-const height = windowWidth < threshold ? width * 0.8 : width * 0.3;
+const width = windowWidth < threshold ? windowWidth * 1.0 : windowWidth * 0.8;
+const height = windowWidth < threshold ? width * 0.3 : width * 0.3;
 
 const margin = {
-    left: windowWidth < threshold ? 30 : 80,
+    left: windowWidth < threshold ? 60 : 80,
     right: windowWidth < threshold ? 80 : 170,
     top: 40,
     bottom: windowWidth < threshold ? 20 : 70
@@ -79,7 +79,7 @@ function createBarChart(divId, field, percent=false) {
             .attr('x', 0)
             .attr('y', 16)
             .style("font-weight", 600)
-            .style("font-size", 18)
+            .style("font-size", windowWidth < threshold ? 14 : 18)
             .text(d => d)
 
     const gRaceth = svg.selectAll(".raceth")
