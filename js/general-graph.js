@@ -24,7 +24,7 @@ const lineHeight = 24;
 const windowWidth = window.innerWidth;
 const threshold = 500;
 
-const width = windowWidth < threshold ? windowWidth * 0.9 : windowWidth * 0.4;
+const width = 500;
 const height = windowWidth < threshold ? width * 0.8 : width * 0.4;
 
 const margin = {
