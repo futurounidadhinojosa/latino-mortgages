@@ -74,13 +74,13 @@ const threshold = 500;
 const rectWidth = 70;
 const gapRect = 4;
 
-const width = windowWidth < threshold ? windowWidth * 0.9 : windowWidth * 0.4;
-const height = windowWidth < threshold ? width * 0.8 : width * 0.7;
+const width = windowWidth < threshold ? windowWidth * 1.0 : windowWidth * 0.8;
+const height = windowWidth < threshold ? width * 0.8 : width * 0.6;
 
 const margin = {
-    left: windowWidth < threshold ? 30 : 80,
+    left: windowWidth < threshold ? 50 : 80,
     right: windowWidth < threshold ? 80 : 170,
-    top: 60,
+    top: windowWidth < threshold ? 60 : 80,
     bottom: windowWidth < threshold ? 20 : 70
 };
 
@@ -168,7 +168,7 @@ gReasons.selectAll(".reason-value")
         .style("text-anchor", 'middle')
         .style("fill", d => d.value > 20 ? 'white' : 'black')
         .style('font-size', 12)
-        .style('font-weight', d => d.max === true ? 600 : 400)
+        .style('font-weight', d => d.max === true ? 700 : 400)
         .text(d => d.value.toFixed(1) + '%')
         .attr("x", (d,i) => margin.left + leftPadding + i * (rectWidth + gapRect) + rectWidth / 2)
         .attr("y", 5);
