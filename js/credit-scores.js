@@ -65,12 +65,14 @@ const reasons = [
 ];
 
 const color = d3.scaleSequential([0, 40], d3.interpolateReds);
+const colorW = d3.interpolate("#FFF", "#ff9912");
+const colorHL = d3.interpolate("#FFF", "#4682b4");
 const cols = ["conventional no hl", "conventional hl"];
 
 const windowWidth = window.innerWidth;
 const threshold = 500;
 const rectWidth = 70;
-const gapRect = 2;
+const gapRect = 4;
 
 const width = windowWidth < threshold ? windowWidth * 0.9 : windowWidth * 0.4;
 const height = windowWidth < threshold ? width * 0.8 : width * 0.7;
@@ -133,24 +135,41 @@ gReasons.selectAll(".reason-name")
         .text(d => d.name)
 
 gReasons.selectAll(".reason-rect")
-    .data(d => cols.map(col => d[col]))
+    .data(d => cols.map(col => {
+        return {
+            'value': d[col],
+            'color': col === "conventional no hl" ? colorW(d[col]/40) : colorHL(d[col]/40)
+        }
+    }))
     .join("rect")
         .attr("class", 'reason-rect')
-        .attr("fill", d => color(d))
+        .attr("fill", d => d.color)
         .attr("x", (d,i) => margin.left + leftPadding + i * (rectWidth + gapRect))
         .attr("y", - yScale.bandwidth() / 2)
+        // .style("stroke", "black")
         .attr("width", rectWidth)
         .attr("height", yScale.bandwidth());
 
 gReasons.selectAll(".reason-value")
-    .data(d => cols.map(col => d[col]))
+    .data(d => {
+        const values = cols.map(col => d[col]);
+        const maxVal = d3.max(values);
+
+        return values.map(val => {
+            return {
+                'value': val,
+                'max': val === maxVal
+            }
+        })
+    })
     .join("text")
         .attr("class", 'reason-value')
         .attr("stroke", 'none')
         .style("text-anchor", 'middle')
-        .style("fill", d => d > 20 ? 'white' : 'black')
+        .style("fill", d => d.value > 20 ? 'white' : 'black')
         .style('font-size', 12)
-        .text(d => d.toFixed(1) + '%')
+        .style('font-weight', d => d.max === true ? 600 : 400)
+        .text(d => d.value.toFixed(1) + '%')
         .attr("x", (d,i) => margin.left + leftPadding + i * (rectWidth + gapRect) + rectWidth / 2)
         .attr("y", 5);
 
