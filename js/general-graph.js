@@ -22,17 +22,16 @@ const raceths = [
 const lineHeight = 24;
 
 const windowWidth = window.innerWidth;
-console.log(windowWidth)
 const threshold = 500;
 
-const width = 500;
-const height = windowWidth < threshold ? width * 0.8 : width * 0.4;
+const width = windowWidth < threshold ? windowWidth * 1.0 : windowWidth * 0.8;
+const height = windowWidth < threshold ? width * 0.4 : width * 0.3;
 
 const margin = {
-    left: windowWidth < threshold ? 30 : 80,
+    left: windowWidth < threshold ? 60 : 80,
     right: windowWidth < threshold ? 80 : 170,
     top: 40,
-    bottom: windowWidth < threshold ? 20 : 70
+    bottom: windowWidth < threshold ? 40 : 70
 };
 
 function createBarChart(divId, field, percent=false) {
