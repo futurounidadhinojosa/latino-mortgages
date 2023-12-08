@@ -436,7 +436,7 @@ gLabels.selectAll(".label")
     .join("text")
         .attr("x", d => xScale(d.value))
         .style("text-anchor", 'middle')
-        .attr("fill", d => d.category === 'white' ? '#d934a1' : d.category === 'hl' ? '#2aad53' : '#aaa')
+        .attr("fill", d => d.category === 'white' ? '#5e0B15' : d.category === 'hl' ? '#f28500' : '#aaa')
         .style("font-weight", 500)
         .text(d => labels[d.category])
 
@@ -471,7 +471,7 @@ gCounty.selectAll(".county-rate")
         .attr("cx", d => xScale(d.value))
         .attr('cy', 0)
         .attr('r', 5)
-        .attr("fill", d => d.category === 'white' ? '#d934a1' : d.category === 'hl' ? '#2aad53' : '#aaa');
+        .attr("fill", d => d.category === 'white' ? '#5e0B15' : d.category === 'hl' ? '#f28500' : '#aaa');
 
 // gCounty.selectAll(".county-rate-value")
 //     .data(d => d.denial_rates)
@@ -483,7 +483,7 @@ gCounty.selectAll(".county-rate")
 //         // .attr('cy', 0)
 //         // .attr('r', 5)
 //         .style("font-size", 12)
-//         .attr("fill", d => d.category === 'white' ? '#d934a1' : d.category === 'hl' ? '#2aad53' : 'lightgray')
+//         .attr("fill", d => d.category === 'white' ? '#5e0B15' : d.category === 'hl' ? '#f28500' : 'lightgray')
 //         .text(d => d.category === 'overall' ? '' : d.value + '%')
 
 var pymChild = new pym.Child({});

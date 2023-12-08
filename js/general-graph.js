@@ -2,7 +2,7 @@ const raceths = [
   {
     'name': 'Hispanic/Latino',
     'value': 11,
-    'color': '#2aad53',
+    'color': '#f28500',
     'letters': ["S", "H", "b", "c", "C", "e", "f", "h", "W", "F", "i"]
   },
   {
@@ -14,7 +14,7 @@ const raceths = [
   {
     'name': 'White',
     'value': 6,
-    'color': '#d934a1',
+    'color': '#5e0B15',
     'letters': ["L", "Q", "R", "V", "c", "C"]
   }
 ];

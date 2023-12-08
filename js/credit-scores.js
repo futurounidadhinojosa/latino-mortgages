@@ -65,8 +65,8 @@ const reasons = [
 ];
 
 const color = d3.scaleSequential([0, 40], d3.interpolateReds);
-const colorW = d3.interpolate("#FFF", "#d934a1");
-const colorHL = d3.interpolate("#FFF", "#2aad53");
+const colorW = d3.interpolate("#FFF", "#5e0B15");
+const colorHL = d3.interpolate("#FFF", "#f28500");
 const cols = ["conventional no hl", "conventional hl"];
 
 const windowWidth = window.innerWidth;
