@@ -17,9 +17,10 @@ const raceths = [
 
 
 function updateHeight() {
-    const sh = d3.select("#viz").node().getBoundingClientRect().height;
-        
-    d3.select("body").style("height", sh + "px");
+    const vh = d3.select("#viz").node().getBoundingClientRect().height,
+      th = d3.select("#title").node().getBoundingClientRect().height,
+      sh = d3.select("#source").node().getBoundingClientRect().height;
+    d3.select("body").style("height", (vh + th + sh + 40) + "px");
 
     pymChild.sendHeight();
   }
@@ -33,7 +34,7 @@ const height = windowWidth < threshold ? width * 0.3 : width * 0.3;
 const margin = {
     left: windowWidth < threshold ? 60 : 80,
     right: windowWidth < threshold ? 80 : 170,
-    top: 40,
+    top: windowWidth < threshold ? 40 : height * 0.2,
     bottom: windowWidth < threshold ? 20 : 70
 };
 
@@ -79,7 +80,7 @@ function createBarChart(divId, field, percent=false) {
             .attr('x', 0)
             .attr('y', 16)
             .style("font-weight", 600)
-            .style("font-size", windowWidth < threshold ? 14 : 18)
+            .style("font-size", windowWidth < threshold ? 14 : 16)
             .text(d => d)
 
     const gRaceth = svg.selectAll(".raceth")
