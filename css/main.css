@@ -3,6 +3,20 @@ body {
     font-size: 14px;
 }
 
+#title {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#source {
+    font-size: 12px;
+}
+
+#source span {
+    font-weight: 600;
+}
+
 .white {
     color: #ff9912;
 }
