@@ -368,9 +368,10 @@ const sortedCounties = counties.sort((a,b) => (b.denial_rates[2].value - b.denia
 
 
 function updateHeight() {
-    const sh = d3.select("#viz").node().getBoundingClientRect().height;
-        
-    d3.select("body").style("height", sh + "px");
+    const vh = d3.select("#viz").node().getBoundingClientRect().height,
+      th = d3.select("#title").node().getBoundingClientRect().height,
+      sh = d3.select("#source").node().getBoundingClientRect().height;
+    d3.select("body").style("height", (vh + th + sh + 40) + "px");
 
     pymChild.sendHeight();
   }
@@ -385,7 +386,7 @@ const margin = {
     left: windowWidth < threshold ? 60 : 80,
     right: windowWidth < threshold ? 80 : 80,
     top: 30,
-    bottom: windowWidth < threshold ? 100 : 70
+    bottom: 40
 };
 
 const svg = d3.select("#viz").append("svg")
