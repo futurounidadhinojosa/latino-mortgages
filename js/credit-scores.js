@@ -65,8 +65,8 @@ const reasons = [
 ];
 
 const color = d3.scaleSequential([0, 40], d3.interpolateReds);
-const colorW = d3.interpolate("#FFF", "#ff9912");
-const colorHL = d3.interpolate("#FFF", "#4682b4");
+const colorW = d3.interpolate("#FFF", "#d934a1");
+const colorHL = d3.interpolate("#FFF", "#2aad53");
 const cols = ["conventional no hl", "conventional hl"];
 
 const windowWidth = window.innerWidth;
@@ -167,7 +167,7 @@ gReasons.selectAll(".reason-value")
         .attr("class", 'reason-value')
         .attr("stroke", 'none')
         .style("text-anchor", 'middle')
-        .style("fill", d => d.value > 20 ? 'white' : 'black')
+        .style("fill", 'black')
         .style('font-size', 12)
         .style('font-weight', d => d.max === true ? 700 : 400)
         .text(d => d.value.toFixed(1) + '%')

@@ -2,19 +2,19 @@ const raceths = [
   {
     'name': 'Hispano/Latino',
     'value': 11,
-    'color': '#4682b4',
+    'color': '#2aad53',
     'letters': ["S", "H", "b", "c", "C", "e", "f", "h", "W", "F", "i"]
   },
   {
     'name': 'General',
     'value': 8,
-    'color': 'lightgray',
+    'color': '#aaa',
     'letters': ["l", "q", "r", "s", "T", "u", "A", "B"]
   },
   {
     'name': 'Anglo',
     'value': 6,
-    'color': '#ff9912',
+    'color': '#d934a1',
     'letters': ["L", "Q", "R", "V", "c", "C"]
   }
 ];

@@ -4,14 +4,14 @@ const raceths = [
         'median': 0.35,
         'prop05': 38,
         'prop10': 13,
-        'color': '#4682b4'
+        'color': '#2aad53'
     },
     {
         "name": "White",
         'median': 0.16,
         'prop05': 21,
         'prop10': 6,
-        'color': '#ff9912'
+        'color': '#d934a1'
     }
 ]
 
