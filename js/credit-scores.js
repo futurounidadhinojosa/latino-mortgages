@@ -80,8 +80,8 @@ const height = windowWidth < threshold ? width * 0.8 : width * 0.6;
 const margin = {
     left: windowWidth < threshold ? 20 : 80,
     right: windowWidth < threshold ? 80 : 170,
-    top: windowWidth < threshold ? 60 : 80,
-    bottom: windowWidth < threshold ? 20 : 70
+    top: windowWidth < threshold ? 40 : 60,
+    bottom: windowWidth < threshold ? 20 : 20
 };
 
 const svg = d3.select("#viz").append("svg")
@@ -119,7 +119,7 @@ svg.selectAll(".reason-subtitle")
         .style('font-weight', 600)
         .text(d => d)
         .attr("x", (d,i) => margin.left + leftPadding + i * (rectWidth + gapRect) + rectWidth / 2)
-        .attr("y", yScale.bandwidth() * 2 - 8);
+        .attr("y", margin.top / 2 - 8);
 
 const gReasons = svg.selectAll(".reason")
     .data(reasons)
@@ -175,9 +175,10 @@ gReasons.selectAll(".reason-value")
         .attr("y", 5);
 
 function updateHeight() {
-    const sh = d3.select("#viz").node().getBoundingClientRect().height;
-        
-    d3.select("body").style("height", sh + "px");
+    const vh = d3.select("#viz").node().getBoundingClientRect().height,
+      th = d3.select("#title").node().getBoundingClientRect().height,
+      sh = d3.select("#source").node().getBoundingClientRect().height;
+    d3.select("body").style("height", (vh + th + sh + 40) + "px");
 
     pymChild.sendHeight();
   }
