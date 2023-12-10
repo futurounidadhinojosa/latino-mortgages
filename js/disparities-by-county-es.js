@@ -360,7 +360,7 @@ const counties = [
 
 const labels = {
     "white": "Anglo",
-    "overall": 'Gneral',
+    "overall": 'General',
     'hl': "Hispano/Latino"
 }
 

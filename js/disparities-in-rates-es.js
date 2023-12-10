@@ -1,13 +1,13 @@
 const raceths = [
     {
-        "name": "Hispanic/Latino",
+        "name": "Hispanico/Latino",
         'median': 0.35,
         'prop05': 38,
         'prop10': 13,
         'color': '#f28500'
     },
     {
-        "name": "White",
+        "name": "Anglo",
         'median': 0.16,
         'prop05': 21,
         'prop10': 6,
@@ -75,7 +75,7 @@ function createBarChart(divId, field, percent=false) {
     // xAxis.selectAll(".tick line").attr("y2", -height + margin.top).attr("stroke", 'lightgray');
 
     svg.selectAll(".title")
-        .data(field === 'median' ? ['Median rate spread'] : field === 'prop05' ? ['Borrowers with a rate spread greater than 0.5'] : ['Borrowers with a rate spread greater than 1'])
+        .data(field === 'median' ? ['Mediana del diferencial de tasas'] : field === 'prop05' ? ['Prestatarios con un diferencial de tasas mayor a 0.5'] : ['Prestatarios con un diferencial de tasas mayor a 1'])
         .join('text')
             .attr("class", 'title')
             .attr('x', 0)
