@@ -140,7 +140,9 @@ function createBarChart(divId, field, percent=false) {
           .attr("fill", d => d.color)
           .style("font-size", 18)
           .attr("text-anchor", "middle")
-          .text(d => percent === true ? d[field] + '%' : d[field])
+          .text(d => percent === true ? d[field] + '%' : d[field]);
+
+  updateHeight();
 }
 
 function updateHeight() {
@@ -148,11 +150,10 @@ function updateHeight() {
       th = d3.select("#title").node().getBoundingClientRect().height,
       sth = d3.select("#subtitle").node().getBoundingClientRect().height
       sh = d3.select("#source").node().getBoundingClientRect().height;
-    d3.select("body").style("height", (vh + th + sth + sh + 60) + "px");
+    d3.select("body").style("height", (vh + th + sth + sh + 80) + "px");
     pymChild.sendHeight();
   }
 
 var pymChild = new pym.Child({});
 
 createBarChart("denied-applications", 'value', percent=true);
-updateHeight();
