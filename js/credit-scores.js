@@ -181,7 +181,11 @@ function updateHeight() {
       sh = d3.select("#source").node().getBoundingClientRect().height;
     d3.select("body").style("height", (vh + th + sth + sh + 80) + "px");
 
-    pymChild.sendHeight();
+    if(pymChild) {
+        setTimeout(() => {
+            pymChild.sendHeight();
+        }, 2000)
+    }
   }
 
 var pymChild = new pym.Child({});
