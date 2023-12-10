@@ -80,7 +80,7 @@ function createBarChart(divId, field, percent=false) {
   //         .style("font-size", 18)
   //         .text(d => d)
 
-  const deltaX = (width - margin.left - margin.right) / (raceths.length + 2);
+  const deltaX = (width - margin.left - margin.right) / raceths.length;
   const radius = 8;
   const padding = 1.5;
   const perRow = 3;
@@ -148,7 +148,7 @@ function updateHeight() {
       th = d3.select("#title").node().getBoundingClientRect().height,
       sth = d3.select("#subtitle").node().getBoundingClientRect().height
       sh = d3.select("#source").node().getBoundingClientRect().height;
-    d3.select("body").style("height", (vh + th + sth + sh + 40) + "px");
+    d3.select("body").style("height", (vh + th + sth + sh + 60) + "px");
     pymChild.sendHeight();
   }
 
