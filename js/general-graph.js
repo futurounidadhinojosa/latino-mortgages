@@ -25,12 +25,13 @@ const windowWidth = window.innerWidth;
 const threshold = 500;
 
 const width = windowWidth < threshold ? windowWidth * 1.0 : windowWidth * 0.8;
-const height = windowWidth < threshold ? width * 0.4 : width * 0.3;
+// const height = windowWidth < threshold ? width * 0.4 : width * 0.3;
+const height = 160;
 
 const margin = {
     left: windowWidth < threshold ? 60 : 80,
     right: windowWidth < threshold ? 80 : 170,
-    top: 20,
+    top: 40,
     bottom: windowWidth < threshold ? 40 : 70
 };
 
@@ -64,9 +65,9 @@ function createBarChart(divId, field, percent=false) {
       .range([margin.left + leftPadding, width - margin.right])
       .domain([0, percent === true ? 15 : d3.max(raceths, d => d[field])]);
 
-  xAxis.call(d3.axisBottom(xScale).ticks(3).tickFormat(d => percent === true ? d + '%' : d));
+  // xAxis.call(d3.axisBottom(xScale).ticks(3).tickFormat(d => percent === true ? d + '%' : d));
   // yAxis.call(d3.axisLeft(yScale))  
-  xAxis.selectAll(".domain").remove();
+  // xAxis.selectAll(".domain").remove();
   // xAxis.selectAll(".tick line").attr("y2", -height + margin.top).attr("stroke", 'lightgray');
 
   // svg.selectAll(".title")
@@ -79,41 +80,66 @@ function createBarChart(divId, field, percent=false) {
   //         .style("font-size", 18)
   //         .text(d => d)
 
+  const deltaX = (width - margin.left - margin.right) / (raceths.length + 2);
+  const radius = 8;
+  const padding = 1.5;
+  const perRow = 3;
+
   const gRaceth = svg.selectAll(".raceth")
       .data(raceths)
       .join("g")
           .attr("class", "raceth")
-          .attr("transform", d => `translate(0,${yScale(d.name)})`);
+          .attr("transform", (d, i) => `translate(${(i+1)*deltaX},0)`);
+
+  gRaceth.selectAll(".raceth-circle")
+    .data(d => d3.range(d.value).map((e) => {
+      const row = Math.floor(e/perRow);
+      const col = e % perRow;
+      console.log(row, col)
+      return {
+        color: d.color,
+        x: (2 * radius + 2 * padding) * col - 2 * (radius + padding),
+        y: (2 * radius + 2 * padding) * row
+      }
+    })) 
+    .join('circle')
+      .attr("class", "raceth-circle")
+      .attr("cy", d => margin.top + d.y)
+      .attr("cx", d => d.x)
+      .attr("r", radius)
+      .attr("fill", d => d.color)
 
   gRaceth.selectAll(".raceth-name")
       .data(d => [d])
       .join("text")
           .attr("class", 'raceth-name')
-          .attr("y", 6)
+          .attr("y", 16)
           .attr("fill", d => d.color)
+          .attr("text-anchor", "middle")
           .text(d => d.name);
 
-  gRaceth.selectAll(".raceth-rate")
-      .data(d => [d])
-      .join("rect")
-          .attr("class", "raceth-rate")
-          .attr("x", margin.left + leftPadding)
-          .attr("y", - yScale.bandwidth() / 2)
-          .attr("width", d => xScale(d[field]) - margin.left - leftPadding)
-          .attr("height", yScale.bandwidth())
-          // .attr("cx", d => xScale(d.value))
-          // .attr('cy', 0)
-          // .attr('r', 5)
-          .attr("fill", d => d.color);
+  // gRaceth.selectAll(".raceth-rate")
+  //     .data(d => [d])
+  //     .join("rect")
+  //         .attr("class", "raceth-rate")
+  //         .attr("x", margin.left + leftPadding)
+  //         .attr("y", - yScale.bandwidth() / 2)
+  //         .attr("width", d => xScale(d[field]) - margin.left - leftPadding)
+  //         .attr("height", yScale.bandwidth())
+  //         // .attr("cx", d => xScale(d.value))
+  //         // .attr('cy', 0)
+  //         // .attr('r', 5)
+  //         .attr("fill", d => d.color);
 
   gRaceth.selectAll(".raceth-value-text")
       .data(d => [d])
       .join("text")
           .attr("class", "raceth-value-text")
-          .attr("x", d => xScale(d[field]) + 6)
-          .attr('y', 6)
+          // .attr("x", d => xScale(d[field]) + 6)
+          .attr('y', 132)
           .attr("fill", d => d.color)
-          .style("font-size", 14)
+          .style("font-size", 18)
+          .attr("text-anchor", "middle")
           .text(d => percent === true ? d[field] + '%' : d[field])
 }
 
